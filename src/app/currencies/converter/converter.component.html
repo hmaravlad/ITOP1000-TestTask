@@ -1,6 +1,4 @@
-<p>converter works!</p>
-
-<div *ngIf="currencies.length > 0">
+<div *ngIf="currencies.length > 0" id="converter">
   <div>
     <select [(ngModel)]="inputRates[1]" (ngModelChange)="recalculate(1)">
       <option *ngFor="let curr of currencies; let i = index " [value]="curr.rate">{{curr.cc}}</option>
