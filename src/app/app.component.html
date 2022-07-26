@@ -1,22 +1,14 @@
 <div *ngIf="isApiError; else noError" class="stretch-to-bottom">
-  <div class="outer">
-    <div class="middle">
-      <div class="inner">
-        <app-error-box (retry)="retry()"></app-error-box>
-      </div>
-    </div>
-  </div>
+  <app-centrer>
+    <app-error-box (retry)="retry()"></app-error-box>
+  </app-centrer>
 </div>
 
 <ng-template #noError>
   <app-header></app-header>
   <div class="stretch-to-bottom">
-    <div class="outer">
-      <div class="middle">
-        <div class="inner">
-          <app-converter></app-converter>
-        </div>
-      </div>
-    </div>
+    <app-centrer>
+      <app-converter></app-converter>
+    </app-centrer>
   </div>
 </ng-template>
