@@ -1,0 +1,17 @@
+<p>converter works!</p>
+
+<div *ngIf="currencies.length > 0">
+  <div>
+    <select [(ngModel)]="inputRates[1]" (ngModelChange)="recalculate(1)">
+      <option *ngFor="let curr of currencies; let i = index " [value]="curr.rate">{{curr.cc}}</option>
+    </select>
+    <input type="text" [(ngModel)]="inputValues[1]" (ngModelChange)="convert($event, 1)">
+  </div>
+
+  <div>
+    <select [(ngModel)]="inputRates[2]" (ngModelChange)="recalculate(2)">
+      <option *ngFor="let curr of currencies; let i = index" [value]="curr.rate">{{curr.cc}}</option>
+    </select>
+    <input type="text" [(ngModel)]="inputValues[2]" (ngModelChange)="convert($event, 2)">
+  </div>
+</div>
