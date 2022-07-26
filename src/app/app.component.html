@@ -1,6 +1,11 @@
-<div *ngIf="isApiError; else noError">
-  Error
-  <button (click)="retry()">Retry</button>
+<div *ngIf="isApiError; else noError" class="stretch-to-bottom">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <app-error-box (retry)="retry()"></app-error-box>
+      </div>
+    </div>
+  </div>
 </div>
 
 <ng-template #noError>
