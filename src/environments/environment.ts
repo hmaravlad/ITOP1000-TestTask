@@ -1,3 +1,5 @@
-export const environment = {
-  production: false
+const environment = {
+  production: false,
 };
+
+export default environment;
