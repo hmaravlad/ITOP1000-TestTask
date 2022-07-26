@@ -1,3 +1,9 @@
 <h1>Currency Converter</h1>
-<app-rate-list></app-rate-list>
-<app-converter></app-converter>
+<div *ngIf="isApiError; else noError">
+  Error
+  <button (click)="retry()">Retry</button>
+</div>
+<ng-template #noError>
+  <app-rate-list></app-rate-list>
+  <app-converter></app-converter>
+</ng-template>

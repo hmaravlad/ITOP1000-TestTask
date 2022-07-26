@@ -14,13 +14,8 @@ export default class RateListComponent implements OnInit {
   currencies: Currency[] = [];
 
   ngOnInit(): void {
-    this.currencyService.getExchangeRates().subscribe({
-      next: (values) => {
-        this.currencies = values.filter((cur) => this.interestingCurrencies.includes(cur.cc));
-      },
-      error: (error) => {
-        error.warn(error);
-      },
+    this.currencyService.getExchangeRates().subscribe((values) => {
+      this.currencies = values.filter((cur) => this.interestingCurrencies.includes(cur.cc));
     });
   }
 }
