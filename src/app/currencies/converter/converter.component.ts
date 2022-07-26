@@ -13,7 +13,7 @@ export default class ConverterComponent implements OnInit {
 
   inputRates: { [key: string]: number } = {};
 
-  inputValues: { [key: string]: number } = {};
+  inputValues: { [key: string]: string } = {};
 
   ngOnInit(): void {
     this.currencyService.getExchangeRates().subscribe((values) => {
@@ -23,8 +23,8 @@ export default class ConverterComponent implements OnInit {
         2: this.currencies[1]?.rate || 1,
       };
       this.inputValues = {
-        1: 1,
-        2: ConverterComponent.calculateValue(1, this.currencies[0]?.rate, this.currencies[1]?.rate) || 1,
+        1: '1',
+        2: ConverterComponent.calculateValue(1, this.currencies[0]?.rate, this.currencies[1]?.rate).toFixed(4) || '1',
       };
     });
   }
@@ -37,11 +37,15 @@ export default class ConverterComponent implements OnInit {
   convert(newValueRaw: string, inputNumber: 1 | 2) {
     const oppositeInput = inputNumber === 1 ? 2 : 1;
     const newValue = Number.parseFloat(newValueRaw);
+    if (newValue < 0 || Number.isNaN(newValue) || newValueRaw === '') {
+      this.inputValues[oppositeInput] = '';
+      return;
+    }
     this.inputValues[oppositeInput] = ConverterComponent.calculateValue(
       newValue,
       this.inputRates[inputNumber],
       this.inputRates[oppositeInput],
-    );
+    ).toFixed(4);
   }
 
   static calculateValue(value1: number, rate1: number, rate2: number): number {
