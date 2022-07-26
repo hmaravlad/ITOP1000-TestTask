@@ -6,6 +6,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 16px;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
